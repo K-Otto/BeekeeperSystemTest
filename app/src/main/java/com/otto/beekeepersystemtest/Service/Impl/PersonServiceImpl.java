@@ -39,12 +39,17 @@ public class PersonServiceImpl extends Service implements PersonService {
     public class ActivateServiceLocalBinder extends Binder {
         public PersonServiceImpl getService() {
             return PersonServiceImpl.this;
+
         }
+
     }
 
-    private PersonServiceImpl()
+    public PersonServiceImpl()
     {
+
         personRepository = new PersonRepositoryImpl(App.getAppContext());
+
+
     }
 
     @Override

@@ -36,7 +36,7 @@ public class PersonActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.view_person);
+        setContentView(R.layout.view_person_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         firstNameTXT =(TextView)findViewById(R.id.firstNameTXT);
