@@ -21,13 +21,12 @@ import com.otto.beekeepersystemtest.Repository.PersonRepository;
 
 import java.util.ArrayList;
 
-
 /**
- * Created by 212026992 on 6/3/2016.
+ * Created by 212026992 on 6/5/2016.
  */
-public class PersonView extends AppCompatActivity {
+public class PersonPreview extends AppCompatActivity {
 
-    EditText firstName, lastName, email;
+    TextView firstName, lastName, email;
     TextView textView;
     TextView firstNameTXT;
     TextView surnameTXT;
@@ -42,21 +41,28 @@ public class PersonView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_layout);
+        setContentView(R.layout.preview_person_layout);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        firstName = (EditText) findViewById(R.id.firstName);
-        lastName = (EditText) findViewById(R.id.lastName);
-        email = (EditText) findViewById(R.id.email);
+        firstName = (TextView) findViewById(R.id.firstNamePreview);
+        lastName = (TextView) findViewById(R.id.lastNamePreview);
+        email = (TextView) findViewById(R.id.emailPreview);
 
         firstNameTXT =(TextView)findViewById(R.id.firstNameTXT);
         surnameTXT =(TextView)findViewById(R.id.surnameTXT);
         emailTXT =(TextView)findViewById(R.id.emailTXT);
         arraySize =(TextView)findViewById(R.id.arraySize);
-
+        firstName.setText(getIntent().getExtras().getString("firstNameSend"));
+        lastName.setText(getIntent().getExtras().getString("surnameSend"));
+        email.setText(getIntent().getExtras().getString("emailSend"));
 
     }
-
+    public void addPersonBTN(View view)
+    {
+        Person person = PersonFactory.create(firstName.getText().toString(),lastName.getText().toString(),email.getText().toString());
+        Person insertedEntity = repo.save(person);
+        Toast.makeText(getBaseContext(), "Submitted" , Toast.LENGTH_SHORT ).show();
+    }
     public void viewPersonBTN(View view)
     {
 
@@ -70,35 +76,13 @@ public class PersonView extends AppCompatActivity {
 
         // To send data use putExtra with a String name followed by its value
 
-
         getNameScreenIntent.putExtra("callingActivity", "MainActivity");
 
         startActivityForResult(getNameScreenIntent, result);
 
-        setContentView(R.layout.view_person_main) ;
+        setContentView(R.layout.view_person) ;
     }
-    public void previewPersonBTN(View view)
-    {
 
-        Intent getNameScreenIntent = new Intent(this, PersonPreview.class);
-
-        // We ask for the Activity to start and don't expect a result to be sent back
-        // startActivity(getNameScreenIntent);
-        // We use startActivityForResult when we expect a result to be sent back
-
-        final int result = 1;
-
-        // To send data use putExtra with a String name followed by its value
-        getNameScreenIntent.putExtra("firstNameSend", firstName.getText().toString() );
-        getNameScreenIntent.putExtra("surnameSend", lastName.getText().toString() );
-        getNameScreenIntent.putExtra("emailSend", email.getText().toString() );
-
-        getNameScreenIntent.putExtra("callingActivity", "MainActivity");
-
-        startActivityForResult(getNameScreenIntent, result);
-
-        setContentView(R.layout.preview_person_layout) ;
-    }
     public void viewHomeBTN(View view)
     {
 

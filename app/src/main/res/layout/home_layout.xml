@@ -83,18 +83,18 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit"
+        android:text="Preview"
         android:id="@+id/addPerson"
 
+        android:onClick="previewPersonBTN"
         android:layout_below="@+id/viewPersonBTN"
-        android:layout_alignLeft="@+id/viewPersonBTN"
-        android:layout_alignStart="@+id/viewPersonBTN"
-        android:onClick="addPersonBTN" />
+        android:layout_alignLeft="@+id/button"
+        android:layout_alignStart="@+id/button" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View"
+        android:text="View all records"
         android:id="@+id/viewPersonBTN"
         android:clickable="false"
 
