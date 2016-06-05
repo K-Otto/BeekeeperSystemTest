@@ -22,6 +22,7 @@ import com.otto.beekeepersystemtest.Factory.PersonFactory;
 import com.otto.beekeepersystemtest.Repository.Impl.PersonRepositoryImpl;
 import com.otto.beekeepersystemtest.Repository.PersonRepository;
 import com.otto.beekeepersystemtest.Views.PersonActivity;
+import com.otto.beekeepersystemtest.Views.PersonView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         firstName = (EditText) findViewById(R.id.firstName);
         lastName = (EditText) findViewById(R.id.lastName);
         email = (EditText) findViewById(R.id.email);
-        textView =(TextView)findViewById(R.id.textView5);
         firstNameTXT =(TextView)findViewById(R.id.firstNameTXT);
         surnameTXT =(TextView)findViewById(R.id.surnameTXT);
         emailTXT =(TextView)findViewById(R.id.emailTXT);
@@ -54,15 +54,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    public void addPersonBTN(View view)
-    {
-        Person person = PersonFactory.create(firstName.getText().toString(),lastName.getText().toString(),email.getText().toString());
-        Person insertedEntity = repo.save(person);
-    }
-    public void viewPersonBTN(View view)
+
+    public void personBTN(View view)
     {
 
-        Intent getNameScreenIntent = new Intent(this, PersonActivity.class);
+        Intent getNameScreenIntent = new Intent(this, PersonView.class);
 
                 // We ask for the Activity to start and don't expect a result to be sent back
               // startActivity(getNameScreenIntent);
@@ -76,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
                startActivityForResult(getNameScreenIntent, result);
 
-        setContentView(R.layout.view_person) ;
+        setContentView(R.layout.home_layout) ;
     }
 
 

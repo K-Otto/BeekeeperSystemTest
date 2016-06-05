@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,6 +24,8 @@ import com.otto.beekeepersystemtest.Repository.PersonRepository;
  */
 public class PersonActivity extends AppCompatActivity {
 
+    Button NxtBTN;
+    Button PrevBTN;
     TextView firstNameTXT;
     TextView surnameTXT;
     TextView emailTXT;
@@ -32,9 +35,10 @@ public class PersonActivity extends AppCompatActivity {
     ArrayList <String> firstNameArray= new ArrayList<>() ;
     ArrayList <String> surnameArray= new ArrayList<>() ;
     ArrayList <String> emailArray= new ArrayList<>() ;
-    int count= -0;
+    int count= 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_person_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -43,6 +47,8 @@ public class PersonActivity extends AppCompatActivity {
         surnameTXT =(TextView)findViewById(R.id.surnameTXT);
         emailTXT =(TextView)findViewById(R.id.emailTXT);
         arraySize =(TextView)findViewById(R.id.arraySize);
+        NxtBTN =(Button)findViewById(R.id.NxtBTN);
+        PrevBTN =(Button)findViewById(R.id.PrevBTN);
         String tests = "";
         Set<Person> persons = repo.findAll();
 
@@ -67,8 +73,19 @@ public class PersonActivity extends AppCompatActivity {
 
 
 
-
-    public void viewNextPersonBTN (View kak)
+public void populatePerBTN(View view)
+{
+    if(count==0)
+    {
+        firstNameTXT.setText(firstNameArray.get(0));
+        surnameTXT.setText(surnameArray.get(0));
+        emailTXT.setText(emailArray.get(0));
+        arraySize.setText(0 + " of " + (firstNameArray.size()-1));
+        NxtBTN.setVisibility(View.VISIBLE);
+        PrevBTN.setVisibility(View.VISIBLE);
+    }
+}
+    public void viewNextPersonBTN (View view)
     {
         if(count>firstNameArray.size())
         {
@@ -134,7 +151,7 @@ arraySize.setText((count) + " of " + (firstNameArray.size()-1));
         getNameScreenIntent.putExtra("callingActivity", "MainActivity");
 
         startActivityForResult(getNameScreenIntent, result);
-        setContentView(R.layout.content_main) ;
+        setContentView(R.layout.activity_main) ;
         firstNameArray.clear();
         surnameArray.clear();
         emailArray.clear();

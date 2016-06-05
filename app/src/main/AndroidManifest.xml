@@ -28,6 +28,11 @@
             android:name=".Views.PersonActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
+        <activity
+            android:label="@string/app_name"
+            android:name=".Views.PersonView"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
         <service
             android:name=".Service.Impl.PersonServiceImpl"
             android:enabled="true"
