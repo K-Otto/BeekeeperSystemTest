@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.otto.beekeepersystemtest.Domain.Person;
 import com.otto.beekeepersystemtest.Factory.PersonFactory;
+import com.otto.beekeepersystemtest.MainActivity;
 import com.otto.beekeepersystemtest.R;
 import com.otto.beekeepersystemtest.Repository.Impl.PersonRepositoryImpl;
 import com.otto.beekeepersystemtest.Repository.PersonRepository;
@@ -79,6 +80,26 @@ public class PersonView extends AppCompatActivity {
         startActivityForResult(getNameScreenIntent, result);
 
         setContentView(R.layout.view_person) ;
+    }
+
+    public void viewHomeBTN(View view)
+    {
+
+        Intent getNameScreenIntent = new Intent(this, MainActivity.class);
+
+        // We ask for the Activity to start and don't expect a result to be sent back
+        // startActivity(getNameScreenIntent);
+        // We use startActivityForResult when we expect a result to be sent back
+
+        final int result = 1;
+
+        // To send data use putExtra with a String name followed by its value
+
+        getNameScreenIntent.putExtra("callingActivity", "MainActivity");
+
+        startActivityForResult(getNameScreenIntent, result);
+
+        setContentView(R.layout.activity_main) ;
     }
 
 
