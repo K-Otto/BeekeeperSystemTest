@@ -62,10 +62,6 @@ public class PersonPreview extends AppCompatActivity {
         Person person = PersonFactory.create(firstName.getText().toString(),lastName.getText().toString(),email.getText().toString());
         Person insertedEntity = repo.save(person);
         Toast.makeText(getBaseContext(), "Submitted" , Toast.LENGTH_SHORT ).show();
-    }
-    public void viewPersonBTN(View view)
-    {
-
         Intent getNameScreenIntent = new Intent(this, PersonActivity.class);
 
         // We ask for the Activity to start and don't expect a result to be sent back
@@ -82,6 +78,7 @@ public class PersonPreview extends AppCompatActivity {
 
         setContentView(R.layout.view_person) ;
     }
+
 
     public void viewHomeBTN(View view)
     {

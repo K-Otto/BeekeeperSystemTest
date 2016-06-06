@@ -73,18 +73,18 @@ public class PersonActivity extends AppCompatActivity {
 
 
 
-public void populatePerBTN(View view)
-{
-    if(count==0)
+    public void populatePerBTN(View view)
     {
-        firstNameTXT.setText(firstNameArray.get(0));
-        surnameTXT.setText(surnameArray.get(0));
-        emailTXT.setText(emailArray.get(0));
-        arraySize.setText(0 + " of " + (firstNameArray.size()-1));
-        NxtBTN.setVisibility(View.VISIBLE);
-        PrevBTN.setVisibility(View.VISIBLE);
+        if(count==0&&!firstNameArray.isEmpty())
+        {
+            firstNameTXT.setText(firstNameArray.get(0));
+            surnameTXT.setText(surnameArray.get(0));
+            emailTXT.setText(emailArray.get(0));
+            arraySize.setText(1 + " of " + (firstNameArray.size()));
+            NxtBTN.setVisibility(View.VISIBLE);
+            PrevBTN.setVisibility(View.VISIBLE);
+        }
     }
-}
     public void viewNextPersonBTN (View view)
     {
         if(count>firstNameArray.size())
@@ -92,7 +92,7 @@ public void populatePerBTN(View view)
             count=firstNameArray.size()-1;
         }
 
-arraySize.setText((count) + " of " + (firstNameArray.size()-1));
+        arraySize.setText((count+1) + " of " + (firstNameArray.size()));
 
         if(count<firstNameArray.size()-1)
         {
@@ -100,7 +100,7 @@ arraySize.setText((count) + " of " + (firstNameArray.size()-1));
             firstNameTXT.setText(firstNameArray.get(count));
             surnameTXT.setText(surnameArray.get(count));
             emailTXT.setText(emailArray.get(count));
-            arraySize.setText((count) + " of " + (firstNameArray.size()-1));
+            arraySize.setText((count+1) + " of " + (firstNameArray.size()));
         }
 
     }
@@ -121,7 +121,7 @@ arraySize.setText((count) + " of " + (firstNameArray.size()-1));
 
         }
 
-        arraySize.setText((count) + " of " + (firstNameArray.size()-1));
+        arraySize.setText((count+1) + " of " + (firstNameArray.size()));
 
         if(count>0)
         {
@@ -129,7 +129,7 @@ arraySize.setText((count) + " of " + (firstNameArray.size()-1));
             firstNameTXT.setText(firstNameArray.get(count));
             surnameTXT.setText(surnameArray.get(count));
             emailTXT.setText(emailArray.get(count));
-            arraySize.setText((count) + " of " + (firstNameArray.size()-1));
+            arraySize.setText((count+1) + " of " + (firstNameArray.size()));
         }
 
 
@@ -179,3 +179,4 @@ arraySize.setText((count) + " of " + (firstNameArray.size()-1));
         return super.onOptionsItemSelected(item);
     }
 }
+
